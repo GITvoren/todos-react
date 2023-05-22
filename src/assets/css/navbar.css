@@ -1,0 +1,36 @@
+nav{
+     display: none;
+     background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32));
+     padding: 0.75rem 2rem;
+}
+
+@media(max-width: 1223px){
+     nav{
+          display: flex;
+          
+     }
+
+}
+
+
+.nav-list{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+}
+
+nav a{
+     text-decoration: none;
+     color: rgb(202, 202, 202);
+}
+
+nav h1{
+     color: #c2c2c2;
+}
+
+
+.flex-row-nav{
+     display: flex;
+     gap: 1rem;
+}

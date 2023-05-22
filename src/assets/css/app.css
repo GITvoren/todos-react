@@ -1,5 +1,5 @@
 .app{
-     width: 400px;
+     max-width: 400px;
      height: 600px;
      background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32));
      margin: auto;
@@ -8,6 +8,11 @@
      border-radius: 8px;
 }
 
+@media(max-width: 1223px){
+     .app{
+          transform: translateX(0vw);
+     }
+}
 
 .flex{
      display: flex;

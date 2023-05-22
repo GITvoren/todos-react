@@ -41,3 +41,17 @@ input{
      color: rgb(40, 40, 40);
      transition: 0.1s ease-in all;
  }
+
+ a:-webkit-any-link{
+     text-decoration: none;
+     color: whitesmoke;
+ }
+
+ .log-container{
+     max-width: 300px;
+     background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32));
+     margin: 3rem auto;
+     padding: 1rem 0;
+     color: whitesmoke;
+     border-radius: 10px;
+ }

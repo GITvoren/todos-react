@@ -27,7 +27,7 @@ function AccountPanel(){
 
      return(
           <div className="acc-panel show">
-               <h1>To Do's</h1>
+               <h1>todos ...</h1>
                <form className="log-form" ref={ref}>
                     <div>
                          <label>Username</label><br />

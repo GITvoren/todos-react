@@ -16,7 +16,8 @@
 
 
 .log-form{
-     margin-top: 3rem;
+     margin-top: 2rem;
+     margin-bottom: 1rem;
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -24,7 +25,8 @@
 }
 
 .reg-form{
-     margin-top: 3rem;
+     margin-top: 2rem;
+     margin-bottom: 1rem;
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -51,5 +53,12 @@
      height: 25px;
      border-radius: 5px;
      border: 0;
-     width: 250px;
+     width: 200px;
+}
+
+@media(max-width: 1223px){
+     .acc-panel{
+         display: none;
+     }
+     
 }
