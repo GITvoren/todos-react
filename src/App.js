@@ -8,18 +8,21 @@ import trash from './assets/images/trash.png'
 import edit from './assets/images/edit.png'
 import check from './assets/images/check.png'
 import plus from './assets/images/plus.png'
+import Canvas from './components/Canvas.js'
 
 
 function App(){
+  /* console.log(crypto.randomUUID()) */
   return(
     <div> 
+        <Navbar />
+         <Canvas/>
          <AccountPanel />
-         <Navbar />
          <Routes>
           <Route path ="/" element={
             <div className="app">     
                 <div className="flex">
-                  <h1>todos  ...</h1>
+                  <h1>&#123;todos&#125;</h1>
                     <div className="flex-row">
                       <input type="text" className="add-input" />
                       <img src={plus} className="icon" />
@@ -34,16 +37,9 @@ function App(){
                           <img src={trash} className="icon"/>
                         </div>
                     </div>
-                    <div className="task-list">
-                        <p>task descas asdas asd asadsa asd</p>
-                        <div className="flex-row">
-                          <img src={check} className="icon"/>
-                          <img src={edit} className="icon"/>
-                          <img src={trash} className="icon"/>
-                        </div>
-                    </div>
                   </div>
-                </div>}
+                </div>
+             }
          />
 
           <Route path="/login" element={<Login />} />

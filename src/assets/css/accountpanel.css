@@ -4,10 +4,12 @@
      top: 0;
      height: 100vh;
      width: 20vw;
-     background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32));
-     color: whitesmoke;
+     background: transparent;
+     backdrop-filter: blur(2px);
+     box-shadow: 0 0 30px rgba(0, 200, 0, 0.5);
+     /* background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32)); */
+     color: rgba(59, 255, 59, 0.897);
 }
-
 
 .acc-panel>h1{
      text-align: center;

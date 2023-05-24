@@ -1,11 +1,14 @@
 .app{
      max-width: 400px;
      height: 600px;
-     background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32));
+     /* background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32)); */
+     background: transparent;
+     backdrop-filter: blur(2px);
+     box-shadow: 0 0 100px rgba(0, 200, 0, 0.5);
      margin: auto;
      transform: translateX(10vw);
      margin-top: 5rem;
-     border-radius: 8px;
+     border-radius: 19px;
 }
 
 @media(max-width: 1223px){
@@ -21,7 +24,7 @@
 }
 
 .flex>h1{
-     color: whitesmoke;
+     color: rgba(59, 255, 59, 0.897);
      margin: 1rem;
 }
 
@@ -38,7 +41,7 @@
      width: 100%;
      margin: 0 1rem;
      padding: 1rem;
-     border-bottom: 1px solid rgba(138, 138, 138, 0.288);
+     border-bottom: 2px solid rgba(0, 224, 0, 0.15);
      height: 80px;
      overflow: hidden; 
 }
@@ -47,7 +50,7 @@
 
 .task-list p{
      font-size: 20px;
-     color: whitesmoke;
+     color: rgba(59, 255, 59, 0.897);
      overflow: hidden;
      white-space: nowrap;
      margin-right: 1rem;
@@ -67,6 +70,6 @@
 
 
 hr.hr{
-     border: 1px solid rgba(138, 138, 138, 0.288);
+     border: 1px solid rgba(0, 224, 0, 0.15);
      width: 100%;
 }

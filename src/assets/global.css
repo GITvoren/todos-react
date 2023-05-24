@@ -1,9 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-
-:root{
-     background-color: #2f39666b;
-}
 
 *{
      margin: 0;
@@ -13,12 +9,12 @@
 
 
 body{
-     font-family: 'Nunito', sans-serif;
+    font-family: 'Share Tech Mono', monospace;
 }
 
 input{
      padding-left: 5px;
-     font-family: 'Nunito', sans-serif;
+     font-family: 'Share Tech Mono', monospace;
  }
 
 
@@ -28,30 +24,51 @@ input{
      padding: 0.25rem 1rem;
      cursor: pointer;
      background: transparent;
-     border: 1px solid whitesmoke;
-     color: #f0f0f0;
+     color: rgba(59, 255, 59, 0.897)!important;
      border-radius: 5px;
-     font-family: 'Nunito', sans-serif;
+     font-family: 'Share Tech Mono', monospace;
      font-size: 16px;
+     box-shadow: 0 0 8px rgb(59, 255, 59);
  }
 
 
  button:hover{
-     background: whitesmoke;
+    transform: scale(1.1);
+    
      color: rgb(40, 40, 40);
      transition: 0.1s ease-in all;
  }
 
  a:-webkit-any-link{
      text-decoration: none;
-     color: whitesmoke;
+     color: rgba(59, 255, 59, 0.897);
  }
 
  .log-container{
      max-width: 300px;
-     background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32));
+     /* background-image: linear-gradient(to right, rgb(61, 61, 61),rgb(32, 32, 32)); */
      margin: 3rem auto;
      padding: 1rem 0;
-     color: whitesmoke;
+     color: rgb(59, 255, 59);
+     background: none;
+     box-shadow: 0 0 18px rgba(0, 200, 0, 0.5);
      border-radius: 10px;
+ }
+
+ .canvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+ }
+
+ input, button{
+    background: transparent;
+    border: 2px solid rgba(0, 224, 0, 0.274)!important;
+    color: rgba(59, 255, 59, 0.897);
+ }
+
+ input:focus{
+   outline: 2px solid green;
+   background: rgba(255, 255, 255, 0.1);
  }
