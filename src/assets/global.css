@@ -53,6 +53,7 @@ input{
      background: none;
      box-shadow: 0 0 18px rgba(0, 200, 0, 0.5);
      border-radius: 10px;
+     backdrop-filter: blur(2px);
  }
 
  .canvas{

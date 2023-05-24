@@ -23,7 +23,6 @@ function AccountPanel(){
 
      }
 
-   
 
      return(
           <div className="acc-panel show">

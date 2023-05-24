@@ -5,7 +5,7 @@ function Navbar(){
      return(
           <nav>
                <div className="nav-list">
-                    <Link to="/"><h1>todos ...</h1></Link>
+                    <Link to="/"><h1>&#123;todos&#125;</h1></Link>
                     <div className="flex-row-nav">
                          <Link to="/register">Register</Link>
                          <Link to="/login">Login</Link>

@@ -6,7 +6,7 @@
      backdrop-filter: blur(2px);
      box-shadow: 0 0 100px rgba(0, 200, 0, 0.5);
      margin: auto;
-     transform: translateX(10vw);
+     /* transform: translateX(10vw); */
      margin-top: 5rem;
      border-radius: 19px;
 }
@@ -34,7 +34,7 @@
      border: 0;
 }
 
-.task-list{
+.task{
      display: flex;
      align-items: center;
      justify-content: space-between;
@@ -48,7 +48,7 @@
 
 
 
-.task-list p{
+.task p{
      font-size: 20px;
      color: rgba(59, 255, 59, 0.897);
      overflow: hidden;
