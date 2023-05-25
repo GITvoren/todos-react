@@ -7,9 +7,9 @@ function Task(){
           <div className="task">
                <p>task descas asdasdasdasdasdas</p>
                <div className="flex-row">
-                    <img src={check} className="icon"/>
-                    <img src={edit} className="icon"/>
-                    <img src={trash} className="icon"/>
+                    <img src={check} className="icon"/><button className="task-btn">COMPLETE</button>
+                    <img src={edit} className="icon"/><button className="task-btn">EDIT</button>
+                    <img src={trash} className="icon"/><button className="task-btn">DELETE</button>
               </div>
           </div>
      )

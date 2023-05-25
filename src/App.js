@@ -19,10 +19,10 @@ function App(){
           <Route path ="/" element={
             <div className="app">     
                 <div className="flex">
-                  <h1>&#123;todos&#125;</h1>
+                  <h1>user12012's missions</h1>
                     <div className="flex-row">
                       <input type="text" className="add-input" />
-                      <img src={plus} className="icon" />
+                      <img src={plus} className="icon" /><button className="task-btn">NEW MISSION</button>
                     </div>
                     <br /><br />
                     <hr className="hr" />
@@ -38,6 +38,7 @@ function App(){
   </div>
   )
 }
+
 
 
 export default App;
