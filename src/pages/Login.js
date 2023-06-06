@@ -1,11 +1,12 @@
 import {Link, useNavigate} from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 
 
 function Login(){
      const [username, setUsername] = useState("");
      const [password, setPassword] = useState("");
      const navigate = useNavigate();
+
 
      const loginUser = async (e) => {
           e.preventDefault();
@@ -27,16 +28,14 @@ function Login(){
                     localStorage.setItem('token', data);
                     alert("Logged In Successfully"+ " green")
                     navigate('/')
-
+                    navigate(0)
                }else{
                     alert(data+ " red")
                }
-
           }catch{
                alert("Error: Failed to Fetch Data")
           }
      }
-
 
      return(
           <div className="log-container">

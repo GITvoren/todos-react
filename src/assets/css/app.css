@@ -33,6 +33,45 @@
      margin: 1rem;
 }
 
+
+
+
+
+.flex{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}
+
+.dont-show{
+     opacity: 0;
+}
+
+.show{
+     opacity: 1;
+     transition: 1s;
+}
+
+
+.task{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 800px;
+     margin: 0 1rem;
+     padding: 1rem;
+     border-bottom: 2px solid rgba(0, 224, 0, 0.15);
+     height: 80px;
+     position: relative;
+}
+
+
+@media(max-width: 800px){
+     .task{
+          width: 600px;   
+     }
+}
+
 @media(max-width: 650px){
      .app{
           border-radius: 19px;
@@ -44,6 +83,9 @@
      }
      .task-btn{
           display: none;
+     }
+     .task{
+          width: 350px;   
      }
 
      .task p{
@@ -68,42 +110,14 @@
      }
 }
 
-.flex{
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-}
-
-.dont-show{
-     opacity: 0;
-}
-
-.show{
-     opacity: 1;
-     transition: 1s;
-}
-
-
-.task{
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     width: 100%;
-     margin: 0 1rem;
-     padding: 1rem;
-     border-bottom: 2px solid rgba(0, 224, 0, 0.15);
-     height: 80px;
-     position: relative;
-}
-
 .task .overflow-div{
-     
-     overflow: hidden;
+
+     overflow: hidden!important;
      margin-right: 1rem;
 }
 
 .task p{
-     white-space: nowrap;
+     white-space: nowrap!important;
 }
 
 

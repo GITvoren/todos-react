@@ -9,12 +9,18 @@ import x from '../assets/images/x.png'
 
 
 
-function Task(){
+function Task({props}){
 
      const [toggleComplete, setToggleComplete] = useState(false)
      const [isEditing, setIsEditing] = useState(false)
 
-    /*  const user = useContext(UserContext) */
+    /*  const {user} = useContext(UserContext) */
+
+    const {description} = props
+    
+     
+     
+
 
 
      return(
@@ -34,7 +40,7 @@ function Task(){
                     <>
                     <div className="overflow-div">
                          <img className={toggleComplete? "show logo" : "dont-show logo"} src={complete}></img>
-                         <p className={toggleComplete? "completed-task" : ""}>Lorem ipsm asdasd asdasd asdasd asdasd asdasd asdasd</p>
+                         <p className={toggleComplete? "completed-task" : ""}>{description}asdfasdfasdfasdfasdfasdf</p>
                     </div>
                     <div className="flex-row">
                          <img src={check} onClick={() => setToggleComplete(!toggleComplete)} className="icon"/><button className="task-btn" onClick={() => setToggleComplete(!toggleComplete)}>COMPLETE</button>
