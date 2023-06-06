@@ -7,21 +7,43 @@ import {Routes, Route} from 'react-router-dom'
 import './assets/css/app.css'
 import plus from './assets/images/plus.png'
 import Canvas from './components/Canvas.js'
+import {useState, useEffect} from 'react'
+import UserContext from './utilities/UserContext.js'
 
 
 function App(){
-  /* console.log(crypto.randomUUID()) */
+
+  const [taskName, setTaskName] = useState("");
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    fetch('http://localhost:3939/users/details', {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+
+    .then(result => result.json())
+    .then(data => {
+
+      setUser(data);
+
+    })
+
+  }, [localStorage])
+
   return(
     <div> 
+      <UserContext.Provider value={user}>
         <Navbar />
          <Canvas/>
          <Routes>
           <Route path ="/" element={
             <div className="app">     
                 <div className="flex">
-                  <h1>user12012's missions</h1>
+                  <h1>{user.username}'s missions</h1>
                     <div className="flex-row">
-                      <input type="text" className="add-input" />
+                      <input type="text" className="add-input" value = {taskName} onChange = {(e) => setTaskName(e.target.value)} />
                       <img src={plus} className="icon" /><button className="task-btn">NEW MISSION</button>
                     </div>
                     <br /><br />
@@ -34,7 +56,8 @@ function App(){
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-         </Routes>
+        </Routes>
+      </UserContext.Provider>
   </div>
   )
 }
