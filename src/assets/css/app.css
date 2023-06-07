@@ -1,6 +1,6 @@
 .app{
      max-width: 800px;
-     height: 600px;
+     min-height: 600px;
      backdrop-filter: blur(2px);
      box-shadow: 0 0 100px rgba(0, 200, 0, 0.5);
      margin: auto;
@@ -191,4 +191,22 @@ hr.hr{
      justify-content: space-between;
      align-items: center;
      gap: 2rem;
+}
+
+.welcome-err{
+     text-align: center;
+}
+
+.welcome-err2{
+     text-align: center;
+     padding-top: 3rem;
+}
+
+.welcome-err2 span{
+     text-decoration: underline;
+     text-underline-offset: 12px;
+}
+
+.welcome-err2 span:hover{
+     text-decoration: none;
 }

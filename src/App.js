@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.js'
 import Login from './pages/Login.js'
 import Logout from './pages/Logout.js'
 import Register from './pages/Register.js'
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Link} from 'react-router-dom'
 import './assets/css/app.css'
 import plus from './assets/images/plus.png'
 import Canvas from './components/Canvas.js'
@@ -18,7 +18,6 @@ function App(){
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
-  const [empty, setEmpty] = useState(true);
 
   const unsetUser = () => {
     localStorage.clear();
@@ -33,7 +32,7 @@ function App(){
 
     .then(result => {
       if(!result.ok){
-        throw Error('Must Log in to view Missions');
+        throw Error('to have access');
       }
       return result.json();
     })
@@ -56,7 +55,7 @@ function App(){
     })
     .then(result => {
       if(!result.ok){
-        throw Error('Must Log in to view Missions')
+        throw Error('to have access')
       }
       return result.json();
     })
@@ -126,7 +125,11 @@ function App(){
                     {
                     user._id == null
                     ?
-                    <h1>{error}</h1>
+                    <>
+                    <h1 className="welcome-err">Welcome to missions.</h1>
+                    <hr className="hr" />
+                    <h1 className="welcome-err2"><Link to="/login"><span>Log in</span></Link> {error}</h1>
+                    </>
                     :
                     <h1>{tasks.map((task => <Task key={task._id} props={task} />))}</h1>
                     }
