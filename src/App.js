@@ -17,7 +17,8 @@ function App(){
   const [taskName, setTaskName] = useState("");
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+  const [empty, setEmpty] = useState(true);
 
   const unsetUser = () => {
     localStorage.clear();
@@ -114,7 +115,7 @@ function App(){
                       <form onSubmit={handleAddTask}>
                       <div className="flex-row">
                         <input type="text" className="add-input" value = {taskName} onChange = {(e) => setTaskName(e.target.value)} />
-                        <img src={plus} className="icon" /><button className="task-btn" type="submit" >NEW MISSION</button>
+                        <img src={plus} className="icon" type="submit" onClick={handleAddTask} /><button className="task-btn" type="submit" >NEW MISSION</button>
                       </div>
                       </form> 
                 

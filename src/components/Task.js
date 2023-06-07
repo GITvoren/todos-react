@@ -10,13 +10,14 @@ import x from '../assets/images/x.png'
 
 
 function Task({props}){
-
+     const {description, _id} = props
      const [toggleComplete, setToggleComplete] = useState(false)
      const [isEditing, setIsEditing] = useState(false)
+     const [newDescription, setNewDescription] = useState(description)
 
     /*  const {user} = useContext(UserContext) */
 
-    const {description, _id} = props
+    
     
      
     const handleDeleteTask = async () => {
@@ -36,6 +37,32 @@ function Task({props}){
           }
     }
 
+    const handleUpdateTask = async (e) => {
+      e.preventDefault();
+
+          try{
+               const result = await fetch(`http://localhost:3939/tasks/${_id}`, {
+                    headers: {
+                         'Content-Type': 'application/json'
+                    },
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                         description: newDescription
+                    })
+               });
+
+               if(result.ok){
+                    alert("Successfully updated task")
+                    setIsEditing(!isEditing)
+               }  else {
+                    alert("Something went wrong")
+               }
+
+          }catch(err){
+               alert(err.message)
+          }
+    }
+
 
      return(
           <div className="task">
@@ -43,12 +70,11 @@ function Task({props}){
                     isEditing
                     ?
                     <div className="edit-flex">
-                         <input type="text" className="edit-input" />
-                         <div className="flex-row">
-                              <img src={x} onClick={() => setIsEditing(!isEditing)} className="icon" /><button className="edit-btns" onClick={() => setIsEditing(!isEditing)}>CANCEL</button>
-                              <img src={ok} className="icon"/><button className="edit-btns">OK</button>
-                         </div>
-                         
+                         <input type="text" className="edit-input" value={newDescription} onChange={(e)=> setNewDescription(e.target.value)} />
+                              <div className="flex-row">
+                                   <img src={x} onClick={() => setIsEditing(!isEditing)} className="icon" /><button className="edit-btns" onClick={() => setIsEditing(!isEditing)}>CANCEL</button>
+                                   <img src={ok} className="icon" onClick={handleUpdateTask} /><button className="edit-btns" onClick={handleUpdateTask} >OK</button>
+                              </div>
                     </div>
                     :
                     <>
@@ -59,12 +85,10 @@ function Task({props}){
                     <div className="flex-row">
                          <img src={check} onClick={() => setToggleComplete(!toggleComplete)} className="icon"/><button className="task-btn" onClick={() => setToggleComplete(!toggleComplete)}>COMPLETE</button>
                          <img src={edit} onClick={() => setIsEditing(!isEditing)} className="icon"/><button className="task-btn" onClick={() => setIsEditing(!isEditing)}>EDIT</button>
-                         <img src={trash} className="icon"/><button onClick={handleDeleteTask} className="task-btn">DELETE</button>
+                         <img src={trash} className="icon" onClick={handleDeleteTask} /><button onClick={handleDeleteTask} className="task-btn">DELETE</button>
                     </div>
                     </>
                }
-              
-               
           </div>
      )
 }
