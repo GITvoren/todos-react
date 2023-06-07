@@ -10,28 +10,38 @@ import x from '../assets/images/x.png'
 
 
 function Task({props}){
-     const {description, _id} = props
-     const [toggleComplete, setToggleComplete] = useState(false)
+     const {description, _id, completed} = props
+     const [toggleComplete, setToggleComplete] = useState(completed)
      const [isEditing, setIsEditing] = useState(false)
      const [newDescription, setNewDescription] = useState(description)
 
-    /*  const {user} = useContext(UserContext) */
+    /*  const {user} = useContext(UserContext) */ 
+    
 
-    
-    
+    const handleCompletedTask = async () => {
+          try{
+               const result = await fetch(`http://localhost:3939/tasks/${_id}/complete`, {
+                    method: 'PATCH'
+               })
+
+          }catch(err){
+               alert(err.message)
+          }
+    }
      
     const handleDeleteTask = async () => {
           try{
                const result = await fetch(`http://localhost:3939/tasks/${_id}`, {
                     method: 'DELETE'
                });
+
+               const data = await result.json();
   
                if(result.status === 200){
-                    alert("Successfully delete task green alert")
+                    alert(data)
                }else {
                     alert("Something went wrong")
-               }
-               
+               }          
           }catch(err){
                alert(err.message)
           }
@@ -51,8 +61,10 @@ function Task({props}){
                     })
                });
 
-               if(result.ok){
-                    alert("Successfully updated task")
+               const data = await result.json()
+
+               if(result.ok){             
+                    alert(data)
                     setIsEditing(!isEditing)
                }  else {
                     alert("Something went wrong")
@@ -62,7 +74,6 @@ function Task({props}){
                alert(err.message)
           }
     }
-
 
      return(
           <div className="task">
@@ -79,11 +90,11 @@ function Task({props}){
                     :
                     <>
                     <div className="overflow-div">
-                         <img className={toggleComplete? "show logo" : "dont-show logo"} src={complete}></img>
-                         <p className={toggleComplete? "completed-task" : ""}>{description}</p>
+                         <img className={completed? "show logo" : "dont-show logo"} src={complete}></img>
+                         <p className={completed? "completed-task" : ""}>{description}</p>
                     </div>
                     <div className="flex-row">
-                         <img src={check} onClick={() => setToggleComplete(!toggleComplete)} className="icon"/><button className="task-btn" onClick={() => setToggleComplete(!toggleComplete)}>COMPLETE</button>
+                         <img src={check} onClick={handleCompletedTask} className="icon"/><button onClick={handleCompletedTask} className="task-btn" >COMPLETE</button>
                          <img src={edit} onClick={() => setIsEditing(!isEditing)} className="icon"/><button className="task-btn" onClick={() => setIsEditing(!isEditing)}>EDIT</button>
                          <img src={trash} className="icon" onClick={handleDeleteTask} /><button onClick={handleDeleteTask} className="task-btn">DELETE</button>
                     </div>
