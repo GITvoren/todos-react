@@ -12,6 +12,7 @@ import {useState, useEffect} from 'react'
 import UserContext from './utilities/UserContext.js'
 import { AlertProvider } from './utilities/AlertContext.js'
 import { ToastContainer } from 'react-toastify';
+import Typewriter from 'typewriter-effect';
 
 
 function App(){
@@ -131,7 +132,15 @@ function App(){
                     user._id == null
                     ?
                     <>
-                    <h1 className="welcome-err">Welcome to missions.</h1>
+                    <h1 className="welcome-err">
+                      <Typewriter
+                      options={{
+                        strings:['Welcome to missions.'],
+                        autoStart: true,
+                        loop: true
+                      }}
+                      />
+                    </h1>
                     <hr className="hr" />
                     <h1 className="welcome-err2"><Link to="/login"><span>Log in</span></Link> {error}</h1>
                     </>
