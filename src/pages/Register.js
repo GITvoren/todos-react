@@ -1,6 +1,7 @@
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, Navigate} from 'react-router-dom';
 import {useState, useEffect, useContext} from 'react';
 import AlertContext from '../utilities/AlertContext.js'
+import UserContext from '../utilities/UserContext.js'
 
 
 function Register(){
@@ -10,7 +11,8 @@ function Register(){
      const [password2, setPassword2] = useState("");
      const [isPasswordMatched, setIsPasswordMatched] = useState(false);
      const navigate = useNavigate();
-     const { notifyerror, notifysuccess } = useContext(AlertContext)
+     const { notifyerror, notifysuccess } = useContext(AlertContext);
+     const { user } = useContext(UserContext);
 
      const clearInput = () => {
           setUsername("");
@@ -69,6 +71,7 @@ function Register(){
      return(
           
           <div className="log-container">
+           {user._id && <Navigate to ="/" />}
                <form className="reg-form">
                     <h1>Register</h1><br />
                     <div>

@@ -1,6 +1,7 @@
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, Navigate} from 'react-router-dom';
 import {useState, useEffect, useContext} from 'react';
 import AlertContext from '../utilities/AlertContext.js'
+import UserContext from '../utilities/UserContext.js'
 
 
 function Login(){
@@ -8,6 +9,7 @@ function Login(){
      const [password, setPassword] = useState("");
      const navigate = useNavigate();
      const { notifyerror, notifysuccess } = useContext(AlertContext)
+     const { user } = useContext(UserContext);
 
 
      const loginUser = async (e) => {
@@ -40,6 +42,7 @@ function Login(){
 
      return(
           <div className="log-container">
+          {user._id && <Navigate to ="/" />}
                <form className="log-form">
                     <h1>Login</h1>
 
