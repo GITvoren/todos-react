@@ -10,6 +10,8 @@ import plus from './assets/images/plus.png'
 import Canvas from './components/Canvas.js'
 import {useState, useEffect} from 'react'
 import UserContext from './utilities/UserContext.js'
+import { AlertProvider } from './utilities/AlertContext.js'
+import { ToastContainer } from 'react-toastify';
 
 
 function App(){
@@ -18,13 +20,13 @@ function App(){
   const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
-
+ 
   const unsetUser = () => {
     localStorage.clear();
   }
   
   useEffect(() => {
-    fetch('http://localhost:3939/users/details', {
+    fetch(`${process.env.REACT_APP_API_URL}/users/details`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -48,7 +50,7 @@ function App(){
   },[localStorage])
 
   useEffect(() => {
-    fetch('http://localhost:3939/tasks', {
+    fetch(`${process.env.REACT_APP_API_URL}/tasks`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -71,7 +73,7 @@ function App(){
       e.preventDefault();
 
     try{
-            const result = await fetch('http://localhost:3939/tasks', {
+            const result = await fetch(`${process.env.REACT_APP_API_URL}/tasks`, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -85,10 +87,9 @@ function App(){
           const data = await result.json();
 
           if(result.ok){
-            alert(data.message + " green");
             setTaskName("")
           } else {
-            alert(data.message + " red");
+            alert(data.message);
           }
 
     }catch(err){
@@ -97,9 +98,13 @@ function App(){
     
   }
 
+
+ 
+
   return(
     <div> 
       <UserContext.Provider value={{user, setUser, unsetUser}}>
+        <AlertProvider>
         <Navbar />
          <Canvas/>
          <Routes>
@@ -142,7 +147,21 @@ function App(){
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
         </Routes>
+        </AlertProvider>
       </UserContext.Provider>
+      <ToastContainer
+          position="top-center"
+          autoClose={1000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          closeButton={false}
+      /> 
   </div>
   )
 }

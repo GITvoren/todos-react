@@ -1,5 +1,6 @@
 import {Link, useNavigate} from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
+import AlertContext from '../utilities/AlertContext.js'
 
 
 function Register(){
@@ -9,6 +10,7 @@ function Register(){
      const [password2, setPassword2] = useState("");
      const [isPasswordMatched, setIsPasswordMatched] = useState(false);
      const navigate = useNavigate();
+     const { notifyerror, notifysuccess } = useContext(AlertContext)
 
      const clearInput = () => {
           setUsername("");
@@ -26,18 +28,18 @@ function Register(){
      
      const registerUser = async (e) => {
           e.preventDefault();
-          if(username == "") return alert("Please input a username");
+          if(username == "") return notifyerror("Please input a username");
 
           if(isPasswordMatched === false){
                setPassword1("");
                setPassword2("");
-               return alert("Password did not match. Try again.");
+               return notifyerror("Password did not match. Try again.");
           }
 
           
 
           try{
-               const result = await fetch('http://localhost:3939/users/register', {
+               const result = await fetch(`${process.env.REACT_APP_API_URL}/users/register`, {
                     headers:{
                          'Content-Type': 'application/json'
                     },
@@ -51,20 +53,21 @@ function Register(){
                const data = await result.json();
 
                if(result.ok){
-                    alert(data+ " greenalert");
+                    notifysuccess(data);
                     navigate('/login');
                } else{
                     clearInput();
-                    alert(data + " redalert");
+                    notifyerror(data);
                }       
 
           }catch{
                clearInput();
-               alert("Error: Failed to Fetch Data");
+               notifyerror("Error: Failed to Fetch Data");
           }      
      }
 
      return(
+          
           <div className="log-container">
                <form className="reg-form">
                     <h1>Register</h1><br />
@@ -84,7 +87,7 @@ function Register(){
                     <div>
                          <span>Already have an account?</span> <Link to="/login"><span className="log-link">Login</span></Link>
                     </div>
-               </form>
+               </form> 
           </div>
      )
 }

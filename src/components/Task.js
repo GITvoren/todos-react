@@ -6,6 +6,7 @@ import complete from '../assets/images/complete.png'
 import ok from '../assets/images/ok.png'
 import x from '../assets/images/x.png'
 /* import UserContext from '../utilities/UserContext.js' */
+import AlertContext from '../utilities/AlertContext.js'
 
 
 
@@ -14,44 +15,44 @@ function Task({props}){
      const [toggleComplete, setToggleComplete] = useState(completed)
      const [isEditing, setIsEditing] = useState(false)
      const [newDescription, setNewDescription] = useState(description)
+     const { notifyerror } = useContext(AlertContext)
 
     /*  const {user} = useContext(UserContext) */ 
     
 
     const handleCompletedTask = async () => {
           try{
-               const result = await fetch(`http://localhost:3939/tasks/${_id}/complete`, {
+               const result = await fetch(`${process.env.REACT_APP_API_URL}/tasks/${_id}/complete`, {
                     method: 'PATCH'
                })
 
           }catch(err){
-               alert(err.message)
+               notifyerror(err.message)
           }
     }
      
     const handleDeleteTask = async () => {
           try{
-               const result = await fetch(`http://localhost:3939/tasks/${_id}`, {
+               const result = await fetch(`${process.env.REACT_APP_API_URL}/tasks/${_id}`, {
                     method: 'DELETE'
                });
 
                const data = await result.json();
   
                if(result.status === 200){
-                    alert(data)
+                    console.log(data)
                }else {
-                    alert("Something went wrong")
+                    notifyerror("Something went wrong")
                }          
           }catch(err){
-               alert(err.message)
+               notifyerror(err.message)
           }
     }
 
-    const handleUpdateTask = async (e) => {
-      e.preventDefault();
+    const handleUpdateTask = async () => {
 
           try{
-               const result = await fetch(`http://localhost:3939/tasks/${_id}`, {
+               const result = await fetch(`${process.env.REACT_APP_API_URL}/tasks/${_id}`, {
                     headers: {
                          'Content-Type': 'application/json'
                     },
@@ -62,16 +63,15 @@ function Task({props}){
                });
 
                const data = await result.json()
-
                if(result.ok){             
-                    alert(data)
+                    console.log(data)
                     setIsEditing(!isEditing)
                }  else {
-                    alert("Something went wrong")
+                    notifyerror(data)
                }
-
+               
           }catch(err){
-               alert(err.message)
+               notifyerror(err.message)
           }
     }
 

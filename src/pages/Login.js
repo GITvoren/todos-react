@@ -1,17 +1,19 @@
 import {Link, useNavigate} from 'react-router-dom';
 import {useState, useEffect, useContext} from 'react';
+import AlertContext from '../utilities/AlertContext.js'
 
 
 function Login(){
      const [username, setUsername] = useState("");
      const [password, setPassword] = useState("");
      const navigate = useNavigate();
+     const { notifyerror, notifysuccess } = useContext(AlertContext)
 
 
      const loginUser = async (e) => {
           e.preventDefault();
           try{
-               const result = await fetch('http://localhost:3939/users/login', {
+               const result = await fetch(`${process.env.REACT_APP_API_URL}/users/login`, {
                headers: {
                     'Content-Type': 'application/json'
                },
@@ -26,14 +28,13 @@ function Login(){
                
                if(result.ok){
                     localStorage.setItem('token', data);
-                    alert("Logged In Successfully"+ " green")
                     navigate('/')
                     navigate(0)
                }else{
-                    alert(data+ " red")
+                    notifyerror(data)
                }
           }catch{
-               alert("Error: Failed to Fetch Data")
+               notifyerror("Error: Failed to Fetch Data")
           }
      }
 
