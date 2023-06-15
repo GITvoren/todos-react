@@ -1,4 +1,5 @@
 # Fullstack Todos App with MERN stack
+
 #### Applied a Matrix design theme with the help of the Matrix Canvas created by [AmurKhoyetsyan](https://github.com/AmurKhoyetsyan)
 
 ## Features
@@ -13,6 +14,7 @@
 
 - [React](https://reactjs.org/)
 - [My Todos API](https://github.com/GITvoren/todos-api)
+  -Node, Express, MongoDB
 - [React Router](https://reactrouter.com/)
 - [React-Toastify](https://www.npmjs.com/package/react-toastify)
 - CSS
