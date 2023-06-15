@@ -1,5 +1,5 @@
 # Fullstack Todos App with MERN stack
-## Applied a Matrix design theme with the help of the Matrix Canvas created by [AmurKhoyetsyan](https://github.com/AmurKhoyetsyan)
+#### Applied a Matrix design theme with the help of the Matrix Canvas created by [AmurKhoyetsyan](https://github.com/AmurKhoyetsyan)
 
 ## Features
 - Register user to the database
@@ -9,7 +9,7 @@
 - Edit existing task
 - Delete task
 
-### Tools and Technologies used
+## Built with
 
 - [React](https://reactjs.org/)
 - [My Todos API](https://github.com/GITvoren/todos-api)
