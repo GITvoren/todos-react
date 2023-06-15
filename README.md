@@ -18,3 +18,4 @@
 - CSS
 - Javascript
 - [Vercel](https://vercel.com/)
+- [React typewriter-effect](https://www.npmjs.com/package/typewriter-effect)
