@@ -2,6 +2,8 @@
 
 #### Applied a Matrix design theme with the help of the Matrix Canvas created by [AmurKhoyetsyan](https://github.com/AmurKhoyetsyan)
 
+#### [Live Demo](https://missions-react.vercel.app/):point_left: (hosted on [Vercel](https://vercel.com/))
+
 ## Features
 - Register user to the database
 - Authenticate user login
