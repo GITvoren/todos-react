@@ -88,7 +88,7 @@ function App(){
           const data = await result.json();
 
           if(result.ok){
-            setTaskName("")
+            setTaskName("");
           } else {
             alert(data.message);
           }
